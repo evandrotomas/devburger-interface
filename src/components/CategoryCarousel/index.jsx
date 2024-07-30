@@ -18,7 +18,6 @@ export function Category_carousel() {
   useEffect(() => {
     async function load_categories() {
       const { data } = await api.get('categories')
-
       set_categories(data)
     }
 
@@ -45,12 +44,7 @@ export function Category_carousel() {
           categories.map((category) => (
             <ContainerItems key={category.id}>
               <Image src={category.url} alt="category-img" />
-              <Button
-                to={{
-                  pathname: '/produtos',
-                  status: { categoryId: category.id },
-                }}
-              >
+              <Button to={`/produtos?categoryId=${category.id}`}>
                 {category.name}
               </Button>
             </ContainerItems>

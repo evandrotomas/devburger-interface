@@ -2,7 +2,8 @@
 import { createBrowserRouter, redirect } from 'react-router-dom'
 
 import { Header } from '../components'
-import { Cart, Home, Login, Products, Register } from '../containers'
+import { paths } from '../constants/paths'
+import { Cart, Home, Login, Products, Register, Admin } from '../containers'
 
 export const router = createBrowserRouter([
   {
@@ -11,17 +12,17 @@ export const router = createBrowserRouter([
   },
   {
     path: '/cadastro',
+
     element: <Register />,
   },
+
   {
     index: true,
     element: <Home />,
     loader: async () => {
       const user = localStorage.getItem('hamburgueria:use_data')
-
       if (!user) return redirect('/login')
-
-      return await await fetch('/')
+      return await fetch('/')
     },
   },
   {
@@ -34,10 +35,8 @@ export const router = createBrowserRouter([
     ),
     loader: async () => {
       const user = localStorage.getItem('hamburgueria:use_data')
-
       if (!user) return redirect('/login')
-
-      return await await fetch('/')
+      return await fetch('/')
     },
   },
   {
@@ -50,9 +49,34 @@ export const router = createBrowserRouter([
     ),
     loader: async () => {
       const user = localStorage.getItem('hamburgueria:use_data')
-
       if (!user) return redirect('/login')
+      return await fetch('/')
+    },
+  },
 
+  {
+    path: paths.Order,
+    element: (
+      <>
+        <Admin />
+      </>
+    ),
+    loader: async () => {
+      const user = localStorage.getItem('hamburgueria:use_data')
+      if (!user) return redirect('/login')
+      return await fetch('/')
+    },
+  },
+  {
+    path: paths.Products,
+    element: (
+      <>
+        <Admin />
+      </>
+    ),
+    loader: async () => {
+      const user = localStorage.getItem('hamburgueria:use_data')
+      if (!user) return redirect('/login')
       return await fetch('/')
     },
   },

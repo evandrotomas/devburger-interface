@@ -60,7 +60,11 @@ export function Login() {
     put_user_data(data)
 
     setTimeout(() => {
-      history('/')
+      if (data.admin) {
+        history('/pedidos')
+      } else {
+        history('/')
+      }
     }, 1000)
   }
 

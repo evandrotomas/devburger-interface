@@ -2,6 +2,7 @@
 
 import PropTypes from 'prop-types'
 import { useEffect, useState } from 'react'
+import { useLocation } from 'react-router-dom'
 
 import Product_logo1 from '../../assets/logo-removebg-preview.png'
 import { CardProduct } from '../../components'
@@ -16,11 +17,10 @@ import {
   ProductsContainer,
 } from './styles'
 
-export function Products({ location: state }) {
-  let categoryId = 0
-  if (state?.categoryId) {
-    categoryId = state.categoryId
-  }
+export function Products() {
+  const location = useLocation()
+  const queryParams = new URLSearchParams(location.search)
+  let categoryId = parseInt(queryParams.get('categoryId'), 10) || 0 // Certifique-se de que é um número
 
   const [categories, set_categories] = useState([])
   const [active_category, set_active_category] = useState(categoryId)
@@ -30,21 +30,18 @@ export function Products({ location: state }) {
   useEffect(() => {
     async function load_categories() {
       const { data } = await api.get('categories')
-
       const new_categories = [{ id: 0, name: 'Todas' }, ...data]
-
       set_categories(new_categories)
     }
 
     async function load_products() {
       const { data: all_products } = await api.get('products')
-
       const new_products = all_products.map((product) => {
         return { ...product, format_price: format_currency(product.price) }
       })
-
       set_products(new_products)
     }
+
     load_products()
     load_categories()
   }, [])
@@ -56,7 +53,6 @@ export function Products({ location: state }) {
       const new_filtered_products = products.filter(
         (product) => product.category_id === active_category,
       )
-
       set_filtered_products(new_filtered_products)
     }
   }, [active_category, products])

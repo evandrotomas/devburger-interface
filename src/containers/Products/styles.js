@@ -26,6 +26,7 @@ export const Products_img = styled.img`
   align-self: end;
   margin: 5px 5px;
 `
+
 export const Category_button = styled.button`
   background: none;
   border: none;
