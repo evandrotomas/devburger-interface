@@ -16,8 +16,8 @@ import { format_currency } from '../../../utils/formatCurrency'
 import { Container, Img, Edit_icon } from './styles'
 
 export function ListProducts() {
-  const [products, set_products] = useState()
-  const to = useNavigate
+  const [products, set_products] = useState([])
+  const to = useNavigate()
 
   useEffect(() => {
     async function load_orders() {
@@ -37,7 +37,7 @@ export function ListProducts() {
   }
 
   function edit_product(product) {
-    to('/editar-produto', { product })
+    to('/editar-produto', { state: { product } })
   }
 
   return (

@@ -4,7 +4,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import { useEffect, useState } from 'react'
 import { useForm, Controller } from 'react-hook-form'
-import { useNavigate } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 import ReactSelect from 'react-select'
 import * as Yup from 'yup'
 
@@ -15,10 +15,8 @@ import { Container, Label, Input, ButtonStyles, LabelUpload } from './styles'
 export function EditProduct() {
   const [file_name, set_file_name] = useState(null)
   const [categories, set_categories] = useState([])
-  const { location: {
-    state: { product }
-  }
-  } = useNavigate()
+  const location = useLocation()
+  const { product } = location.state || {} // Adicione uma verificação de fallback aqui
 
   console.log(product)
 
