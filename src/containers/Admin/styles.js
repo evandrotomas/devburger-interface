@@ -1,4 +1,5 @@
 /* eslint-disable prettier/prettier */
+
 import styled from 'styled-components'
 
 export const Container = styled.div`
@@ -11,4 +12,6 @@ export const Container = styled.div`
 `
 export const ContainerItemns = styled.div`
   padding: 20px;
+  width: 100%;
+  margin-left: 240px;
 `

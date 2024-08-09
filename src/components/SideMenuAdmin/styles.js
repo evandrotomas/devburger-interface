@@ -5,9 +5,11 @@ import styled from 'styled-components'
 export const Container = styled.div`
   background: #3c3c3c;
   box-shadow: 0px 0px 14px rgba(0, 0, 0.15);
-  width: 300px;
+  width: 250px;
   top: 0;
   left: 0;
+  position: fixed;
+  height: 100%;
 
   hr {
     margin: 50px 15px;

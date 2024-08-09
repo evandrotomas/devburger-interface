@@ -3,7 +3,9 @@
 import EditIcon from '@mui/icons-material/Edit'
 import styled from 'styled-components'
 
-export const Container = styled.div``
+export const Container = styled.div`
+  padding: 20px;
+`
 
 export const Img = styled.img`
   width: 70px;

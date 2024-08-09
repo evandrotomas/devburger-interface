@@ -1,4 +1,5 @@
 /* eslint-disable prettier/prettier */
+import AddIcon from '@mui/icons-material/Add';
 import LocalMallIcon from '@mui/icons-material/LocalMall'
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart'
 
@@ -16,5 +17,11 @@ export const list = [
     label: 'Listar Produtos',
     link: paths.Products,
     icon: ShoppingCartIcon,
+  },
+  {
+    id: 3,
+    label: 'Novo Produto',
+    link: paths.NewProduct,
+    icon: AddIcon,
   },
 ]

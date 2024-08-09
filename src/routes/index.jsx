@@ -58,7 +58,7 @@ export const router = createBrowserRouter([
     path: paths.Order,
     element: (
       <>
-        <Admin />
+        <Admin match={paths.Order} />
       </>
     ),
     loader: async () => {
@@ -71,7 +71,33 @@ export const router = createBrowserRouter([
     path: paths.Products,
     element: (
       <>
-        <Admin />
+        <Admin match={paths.Products} />
+      </>
+    ),
+    loader: async () => {
+      const user = localStorage.getItem('hamburgueria:use_data')
+      if (!user) return redirect('/login')
+      return await fetch('/')
+    },
+  },
+  {
+    path: paths.NewProduct,
+    element: (
+      <>
+        <Admin match={paths.NewProduct} />
+      </>
+    ),
+    loader: async () => {
+      const user = localStorage.getItem('hamburgueria:use_data')
+      if (!user) return redirect('/login')
+      return await fetch('/')
+    },
+  },
+  {
+    path: paths.EditProduct,
+    element: (
+      <>
+        <Admin match={paths.EditProduct} />
       </>
     ),
     loader: async () => {

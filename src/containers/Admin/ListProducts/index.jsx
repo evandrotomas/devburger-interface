@@ -9,13 +9,15 @@ import TableContainer from '@mui/material/TableContainer'
 import TableHead from '@mui/material/TableHead'
 import TableRow from '@mui/material/TableRow'
 import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 import { api } from '../../../services/api'
 import { format_currency } from '../../../utils/formatCurrency'
 import { Container, Img, Edit_icon } from './styles'
 
 export function ListProducts() {
-  const [products, set_products] = useState([])
+  const [products, set_products] = useState()
+  const to = useNavigate
 
   useEffect(() => {
     async function load_orders() {
@@ -34,6 +36,10 @@ export function ListProducts() {
     return <CancelIcon style={{ color: 'red' }} />
   }
 
+  function edit_product(product) {
+    to('/editar-produto', { product })
+  }
+
   return (
     <Container>
       <TableContainer component={Paper}>
@@ -48,7 +54,7 @@ export function ListProducts() {
             </TableRow>
           </TableHead>
           <TableBody>
-            {products.map((product) => (
+            {products && products.map((product) => (
               <TableRow
                 key={product.id}
                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
@@ -62,7 +68,7 @@ export function ListProducts() {
                   <Img src={product.url} alt="product-img" />
                 </TableCell>
                 <TableCell>
-                  <Edit_icon />
+                  <Edit_icon onClick={() => edit_product(product)} />
                 </TableCell>
               </TableRow>
             ))}
