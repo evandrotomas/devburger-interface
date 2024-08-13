@@ -11,6 +11,7 @@ import TableRow from '@mui/material/TableRow'
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
+import { paths } from '../../../constants/paths'
 import { api } from '../../../services/api'
 import { format_currency } from '../../../utils/formatCurrency'
 import { Container, Img, Edit_icon } from './styles'
@@ -37,7 +38,7 @@ export function ListProducts() {
   }
 
   function edit_product(product) {
-    to('/editar-produto', { state: { product } })
+    to(paths.EditProduct, { state: { product } })
   }
 
   return (

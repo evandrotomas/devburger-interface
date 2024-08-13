@@ -17,7 +17,6 @@ export const Container = styled.div`
     padding: 30px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
 
     div {
       margin-top: 7px;
@@ -70,5 +69,17 @@ export const LabelUpload = styled.label`
   input {
     opacity: 0;
     width: 1px;
+  }
+`
+
+export const ContainerInput = styled.div`
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+
+  input {
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
   }
 `
